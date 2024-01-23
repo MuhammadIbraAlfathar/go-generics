@@ -5,8 +5,10 @@ import (
 	"testing"
 )
 
+type Age int
+
 type Number interface {
-	int | int16 | int32 | int64 |
+	~int | int16 | int32 | int64 |
 	float32 | float64
 }
 
@@ -20,4 +22,5 @@ func Min[T Number](value1, value2 T) T {
 
 func TestMin(t *testing.T) {
 	assert.Equal(t, 100, Min[int](100, 200))
+	assert.Equal(t, Age(100), Min[Age](Age(100), Age(200)))
 }
